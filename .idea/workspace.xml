@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89cf01a9-56a0-49d1-9d7e-7884e89ec5de" name="Default" comment="- Projet java web">
+    <list default="true" id="89cf01a9-56a0-49d1-9d7e-7884e89ec5de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/spring/henallux/config/MainConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/spring/henallux/config/MainConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/products.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/products.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,8 +70,8 @@
       <file leaf-file-name="MainConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/spring/henallux/config/MainConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+            <state relative-caret-position="272">
+              <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -881,12 +880,20 @@
       <workItem from="1513531996171" duration="8243000" />
       <workItem from="1513711821840" duration="3002000" />
       <workItem from="1513776402192" duration="4609000" />
-      <workItem from="1513799982486" duration="392000" />
+      <workItem from="1513799982486" duration="444000" />
     </task>
+    <task id="LOCAL-00001" summary="- Projet java web">
+      <created>1513800395434</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1513800395434</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114231000" />
+    <option name="totallyTimeSpent" value="114283000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1423,8 +1430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/spring/henallux/config/MainConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        <state relative-caret-position="272">
+          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
           <folding />
         </state>
       </provider>

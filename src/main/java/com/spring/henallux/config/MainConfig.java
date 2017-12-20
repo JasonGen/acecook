@@ -30,6 +30,7 @@ public class MainConfig extends WebMvcConfigurerAdapter {
 		return defaultMessageCodesResolver;
 	}
 	//hello MainConfig
+	//hello pushKRAKENNN
 	@Bean
 	public ResourceBundleMessageSource messageSource(){
 		
