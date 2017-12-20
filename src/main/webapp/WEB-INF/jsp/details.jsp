@@ -18,7 +18,7 @@
         <div class="box_top"></div>
         <div class="box_center">
           <div class="prod_title"><spring:message code="detailsTitle"/></div>
-          <p class="details">${materiel.description} </p>
+          <p class="details"> </p>
           <div class="price"><strong>PRICE:</strong> <span class="red"><fmt:formatNumber value="${materiel.prix}" type="currency" currencySymbol="€"/></span></div>
         <form:form
         method="POST"
