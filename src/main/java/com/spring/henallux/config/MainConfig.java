@@ -29,7 +29,7 @@ public class MainConfig extends WebMvcConfigurerAdapter {
 		DefaultMessageCodesResolver defaultMessageCodesResolver = new DefaultMessageCodesResolver();
 		return defaultMessageCodesResolver;
 	}
-	
+	//hello MainConfig
 	@Bean
 	public ResourceBundleMessageSource messageSource(){
 		
