@@ -30,12 +30,9 @@ public class DetailsController {
 	@RequestMapping(value = "/{idProduct}",method=RequestMethod.GET)
 	public String home(Model model, @PathVariable ("idProduct") Integer id)
 	{
-		System.out.println("Inside details");
 		if(id != null){
-			System.out.println("Dans le id!=null");
 			materielModel = materielDAO.find(id);
 			if(materielModel != null){
-				System.out.println("SecondIf");
 				model.addAttribute("materiel", materielModel);
 			}
 		}

@@ -26,12 +26,13 @@
 				<li><a href="<spring:url value='/products'/>"><spring:message code="cookingMaterialLink"/></a></li>
 				<c:if test="${empty currentUser.email}">
 					<li><a href="<spring:url value='/myAccount'/>"><spring:message code="myAccountLink"/></a></li>
+					<li><a href="<spring:url value='/register'/>"><spring:message code="registerLink"/></a></li>
 				</c:if>
-				<li><a href="<spring:url value='/register'/>"><spring:message code="registerLink"/></a></li>
+				<c:if test="${not empty currentUser.email}">
+				<li><a href=""><spring:message code="disconnect"/></a></li>
+				</c:if >
 				<li>
 					<c:if test="${not empty currentUser.email}">
-						Bonjour
-						${currentUser.nom}
 						${currentUser.prenom}
 					</c:if >
 				</li>
