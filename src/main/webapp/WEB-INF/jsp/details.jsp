@@ -11,11 +11,10 @@
   <div class="left_content">
     <div class="title"><span class="title_icon"></span>Product name</div>
     <div class="feat_prod_box_details">
-      <div class="prod_img"><a href="#"><img src="images/prod1.gif" alt="" border="0" /></a> <br />
-        <br />
-        <a href="images/big_pic.jpg" rel="lightbox"><img src="images/zoom.gif" alt="" border="0" /></a> </div>
+
+
       <div class="prod_det_box">
-        <div class="box_top"></div>
+
         <div class="box_center">
           <div class="prod_title"><spring:message code="detailsTitle"/></div>
           <p class="details"> </p>
@@ -26,7 +25,7 @@
         modelAttribute="ligneCommande">
           <form:input path = "nombrePieces" type="number" min = "1" value = "1" />
           <form:errors path="nombrePieces"/>
-          <form:button type="submit"><img src="images/order_now.gif" alt="" border="0" /></a></form:button>
+          <form:button type="submit"><spring:message code="addToCart"/><img src="images/order_now.gif" alt="" border="0" /></a></form:button>
           <%--<form:button type="submit"><a class="more"><img src="images/order_now.gif" alt="" border="0" /></a></form:button>--%>
           <%--<form action ="/details/${materiel.idMateriel}" method="post" id="orderAction" modelAttribute="ligneCommande">--%>
             <%--&lt;%&ndash;<form:input path="prixReel" disabled="true"/>&ndash;%&gt;--%>
@@ -73,7 +72,6 @@
     </div>
     <div class="right_box">
       <div class="title"><span class="title_icon"></span></div>
-      <ul class="list">
 
     </div>
   </div>
@@ -82,15 +80,17 @@
 </div>
 <!--end of center content-->
 <div class="footer">
+  <div class="left_footer"><img src="" alt="" /><br />
     <a href="http://csscreme.com"><img src="images/csscreme.gif" alt="" border="0" /></a></div>
 </div>
 
 </body>
+</html><!--
 <script type="text/javascript">
 
     var tabber1 = new Yetii({
         id: 'demo'
     });
 
-</script>
-</html>
+</script>-->
+

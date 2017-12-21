@@ -33,10 +33,7 @@ public class ProductController {
 	@ModelAttribute(value = "productList")
 	public List<MaterielModel> getProductList()
     {
-		System.out.println("getproductList()");
-		//System.out.println(materielDAO.find(1));
 		return materielDAO.findAll();
-		//System.out.println(materielDAO.);
 	}
 
 	@ModelAttribute(value = "translationProductList")
@@ -48,8 +45,6 @@ public class ProductController {
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model) 
 	{
-		//model.addAttribute("productList", materielDAO.findAll());
-		System.out.println("INSIDE product Controller");
 		return MATERIEL_PAGE;
 	}
 	

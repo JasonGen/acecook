@@ -21,7 +21,7 @@
   <div class="left_content">
     <div class="title"><span class="title_icon"></span><spring:message code="registerTitle"/></div>
     <div class="feat_prod_box_details">
-      <p class="details"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
+      <p class="details">  </p>
       <div class="contact_form">
         <div class="form_subtitle"><spring:message code="registerInfo"/></div>
 
@@ -107,7 +107,7 @@
     <a href="${localeEn}"><img src="images/gb.gif" alt="" border="0" /></a>
     <a href="${localeFr}"><img src="images/fr.gif" alt="" border="0" /></a>  </div>
     <div class="cart">
-      <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" /></span>My cart</div>
+      <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" /></span><spring:message code="cart"/></div>
 
       <div class="home_cart_content"> <c:if test ="${empty basket.products}"> 0
       </c:if>
