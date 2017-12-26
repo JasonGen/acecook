@@ -1,5 +1,6 @@
 package com.spring.henallux.dataAccess.DAO.impl;
 
+import com.spring.henallux.dataAccess.Entity.AchatEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,6 @@ import com.spring.henallux.model.ClientModel;
 @Service
 public class AchatDAOImpl implements AchatDAO{
 
-
-
 	@Autowired
 	private RepositoryAchat repositoryAchat;
 	@Autowired
@@ -25,11 +24,11 @@ public class AchatDAOImpl implements AchatDAO{
 
 		return providerConverter.achatEntityToModel(repositoryAchat.findOne(id));
 	}
-//
-//	@Override
-//	public void save(AchatModel achatModel) {
-//		repositoryAchat.save(providerConverter.achatModelToEntity(achatModel));
-//	}
+
+	@Override
+	public AchatEntity save(AchatModel achatModel) {
+		return repositoryAchat.save(providerConverter.achatModelToEntity(achatModel));
+	}
 
 
 

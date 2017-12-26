@@ -5,154 +5,153 @@ import org.springframework.stereotype.Service;
 import com.spring.henallux.dataAccess.Entity.*;
 import com.spring.henallux.model.*;
 
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 @Service
 public class ProviderConverter {
 
-	public ClientModel clientEntityToModel(ClientEntity entity)
-	{
-		ClientModel clientModel = new ClientModel();
-		clientModel.setIdClient(entity.getIdClient());
-		clientModel.setNom(entity.getNom());
-		clientModel.setPrenom(entity.getPrenom());
-		clientModel.setDateNaiss(entity.getDateNaiss());
-		clientModel.setEmail(entity.getEmail());
-		clientModel.setNumTel(entity.getNumTel());
-		clientModel.setMotDePasse(entity.getMotDePasse());
-		clientModel.setNumeroRue(entity.getNumeroRue());
-		clientModel.setRue(entity.getRue());
-		clientModel.setVille(entity.getVille());
-		clientModel.setCodePostal(entity.getCodePostal());
+    public ClientModel clientEntityToModel(ClientEntity entity) {
+        ClientModel clientModel = new ClientModel();
+        clientModel.setIdClient(entity.getIdClient());
+        clientModel.setNom(entity.getNom());
+        clientModel.setPrenom(entity.getPrenom());
+        clientModel.setDateNaiss(entity.getDateNaiss());
+        clientModel.setEmail(entity.getEmail());
+        clientModel.setNumTel(entity.getNumTel());
+        clientModel.setMotDePasse(entity.getMotDePasse());
+        clientModel.setNumeroRue(entity.getNumeroRue());
+        clientModel.setRue(entity.getRue());
+        clientModel.setVille(entity.getVille());
+        clientModel.setCodePostal(entity.getCodePostal());
 
-		return clientModel;
-	}
+        return clientModel;
+    }
 
-	public ClientEntity clientModelToEntity(ClientModel model)
-	{
-		ClientEntity clientEntity = new ClientEntity();
+    public ClientEntity clientModelToEntity(ClientModel model) {
 
-		//TODO : ENLEVER SET ID DE MODEL VERS ENTITY
-		clientEntity.setNom(model.getNom());
-		clientEntity.setPrenom(model.getPrenom());
-		clientEntity.setDateNaiss(model.getDateNaiss());
-		clientEntity.setEmail(model.getEmail());
-		clientEntity.setNumTel(model.getNumTel());
-		clientEntity.setMotDePasse(model.getMotDePasse());
-		clientEntity.setNumeroRue(model.getNumeroRue());
-		clientEntity.setRue(model.getRue());
-		clientEntity.setVille(model.getVille());
-		clientEntity.setCodePostal(model.getCodePostal());
+        ClientEntity clientEntity = new ClientEntity();
+        clientEntity.setIdClient(model.getIdClient());
+        clientEntity.setNom(model.getNom());
+        clientEntity.setPrenom(model.getPrenom());
+        clientEntity.setDateNaiss(model.getDateNaiss());
+        clientEntity.setEmail(model.getEmail());
+        clientEntity.setNumTel(model.getNumTel());
+        clientEntity.setMotDePasse(model.getMotDePasse());
+        clientEntity.setNumeroRue(model.getNumeroRue());
+        clientEntity.setRue(model.getRue());
+        clientEntity.setVille(model.getVille());
+        clientEntity.setCodePostal(model.getCodePostal());
+        return clientEntity;
+    }
 
-		return clientEntity;
-	}
+    public AchatEntity achatModelToEntity(AchatModel model) {
+        AchatEntity achatEntity = new AchatEntity();
+        achatEntity.setDateAchat(model.getDateAchat());
+        achatEntity.setClient(clientModelToEntity(model.getClient()));
+        achatEntity.setLigneCommandeEntities(model.getLigneCommandeModelList().stream()
+                .map(e -> {
+                    LigneCommandeEntity entity = ligneCommandeModelToEntity(e);
+                    //Pour ne pas que la FK soit null
+                    entity.setAchat(achatEntity);
+                    return entity;
+                })
+                .collect(Collectors.toList()));
+        return achatEntity;
+    }
 
-	public AchatEntity achatModelToEntity(AchatModel model)
-	{
-		AchatEntity achatEntity = new AchatEntity();
-		achatEntity.setDateAchat(model.getDateAchat());
-		achatEntity.setClient(clientModelToEntity(model.getClient()));
+    public AchatModel achatEntityToModel(AchatEntity entity) {
 
-		return achatEntity;
-	}
+        AchatModel achatModel = new AchatModel();
+        achatModel.setNumeroCommande(entity.getNumCom());
+        achatModel.setDateAchat(entity.getDateAchat());
+        achatModel.setClient(clientEntityToModel(entity.getClient()));
+        achatModel.setLigneCommandeModelList(entity.getLigneCommandeEntities().stream()
+                .map(e -> {
+                    LigneCommandeModel model = ligneCommandeEntityToModel(e);
+                    model.setNumeroCommande(achatModel);
+                    return model;
+                })
+                .collect(Collectors.toList()));
+        return achatModel;
+    }
 
-	public AchatModel achatEntityToModel(AchatEntity entity)
-	{
+    public LangueModel langueEntityToModel(LangueEntity entity) {
 
-		AchatModel achatModel = new AchatModel();
+        LangueModel langueModel = new LangueModel();
+        langueModel.setIdLangue(entity.getIdLangue());
+        langueModel.setCodeLangue(entity.getCodeLangue());
+        langueModel.setNomLangue(entity.getCodeLangue());
+        return langueModel;
+    }
 
-		achatModel.setNumeroCommande(entity.getNumCom());
-		achatModel.setDateAchat(entity.getDateAchat());
-		achatModel.setClient(clientEntityToModel(entity.getClient()));
+    public LangueEntity langueModelToEntity(LangueModel model) {
 
-		return achatModel;
-	}
+        LangueEntity langueEntity = new LangueEntity();
+        langueEntity.setCodeLangue(model.getCodeLangue());
+        langueEntity.setNomLangue(model.getCodeLangue());
+        return langueEntity;
+    }
 
-	public LangueModel langueEntityToModel(LangueEntity entity)
-	{
-		LangueModel langueModel = new LangueModel();
+    public LigneCommandeModel ligneCommandeEntityToModel(LigneCommandeEntity entity) {
 
-		langueModel.setIdLangue(entity.getIdLangue());
-		langueModel.setCodeLangue(entity.getCodeLangue());
-		langueModel.setNomLangue(entity.getCodeLangue());
-		return langueModel;
-	}
+        LigneCommandeModel lcModel = new LigneCommandeModel();
+        lcModel.setIdLigneCommande(entity.getIdLigneCommande());
+        lcModel.setMateriel(materielEntityToModel(entity.getMateriel()));
+        lcModel.setNombrePieces(entity.getNombrePieces());
+        lcModel.setNumeroCommande(achatEntityToModel(entity.getAchat()));
+        lcModel.setPrixReel(entity.getPrixReel());
+        return lcModel;
+    }
 
-	public LangueEntity langueModelToEntity(LangueModel model)
-	{
-		LangueEntity langueEntity = new LangueEntity();
+    public LigneCommandeEntity ligneCommandeModelToEntity(LigneCommandeModel model) {
 
-		langueEntity.setCodeLangue(model.getCodeLangue());
-		langueEntity.setNomLangue(model.getCodeLangue());
-		return langueEntity;
-	}
+        LigneCommandeEntity lcEntity = new LigneCommandeEntity();
+        lcEntity.setMateriel(materielModelToEntity(model.getMateriel()));
+        lcEntity.setNombrePieces(model.getNombrePieces());
+        lcEntity.setPrixReel(model.getPrixReel());
+        return lcEntity;
+    }
 
-	public LigneCommandeModel ligneCommandeEntityToModel(LigneCommandeEntity entity)
-	{
-		LigneCommandeModel lcModel = new LigneCommandeModel();
+    public MaterielModel materielEntityToModel(MaterielEntity e) {
 
-		lcModel.setIdLigneCommande(entity.getIdLigneCommande());
-		lcModel.setMateriel(materielEntityToModel(entity.getMateriel()));
-		lcModel.setNombrePieces(entity.getNombrePieces());
-		lcModel.setNumeroCommande(achatEntityToModel(entity.getAchat()));
-		lcModel.setPrixReel(entity.getPrixReel());
-		return lcModel;
-	}
+        MaterielModel m = new MaterielModel();
+        m.setIdMateriel(e.getIdMateriel());
+        m.setPhoto(e.getPhoto());
+        m.setPrix(e.getPrix());
+        m.setQuantiteStock(e.getQuantiteStock());
+        return m;
+    }
 
-	public LigneCommandeEntity ligneCommandeModelToEntity(LigneCommandeModel model)
-	{
-		LigneCommandeEntity lcEntity = new LigneCommandeEntity();
+    public MaterielEntity materielModelToEntity(MaterielModel m) {
 
-		lcEntity.setMateriel(materielModelToEntity(model.getMateriel()));
-		lcEntity.setNombrePieces(model.getNombrePieces());
-		lcEntity.setAchat(achatModelToEntity(model.getNumeroCommande()));
-		lcEntity.setPrixReel(model.getPrixReel());
-		return lcEntity;
-	}
+        MaterielEntity e = new MaterielEntity();
+        e.setIdMateriel(m.getIdMateriel());
+        e.setPhoto(m.getPhoto());
+        e.setPrix(m.getPrix());
+        e.setQuantiteStock(m.getQuantiteStock());
+        return e;
+    }
 
-	public MaterielModel materielEntityToModel(MaterielEntity e)
-	{
-		MaterielModel m = new MaterielModel();
+    public TraductionMaterielModel traductionMaterielEntityToModel(TraductionMaterielEntity e) {
 
-		m.setIdMateriel(e.getIdMateriel());
-		m.setPhoto(e.getPhoto());
-		m.setPrix(e.getPrix());
-		m.setQuantiteStock(e.getQuantiteStock());
+        TraductionMaterielModel m = new TraductionMaterielModel();
+        m.setIdTradMateriel(e.getIdTradMat());
+        m.setDescriptionMateriel(e.getDescriptionMateriel());
+        m.setLangueModel(langueEntityToModel(e.getLangue()));
+        m.setMaterielModel(materielEntityToModel(e.getMateriel()));
+        m.setTraductionNomMateriel(e.getTraductionNomMateriel());
+        return m;
+    }
 
-		return m;
-	}
+    public TraductionMaterielEntity traductionMaterielModelToEntity(TraductionMaterielModel m) {
 
-	public MaterielEntity materielModelToEntity(MaterielModel m)
-	{
-		MaterielEntity e = new MaterielEntity();
+        TraductionMaterielEntity e = new TraductionMaterielEntity();
+        e.setDescriptionMateriel(m.getDescriptionMateriel());
+        e.setLangue(langueModelToEntity(m.getLangueModel()));
+        e.setMateriel(materielModelToEntity(m.getMaterielModel()));
+        e.setTraductionNomMateriel(m.getTraductionNomMateriel());
 
-		e.setPhoto(m.getPhoto());
-		e.setPrix(m.getPrix());
-		e.setQuantiteStock(m.getQuantiteStock());
-
-		return e;
-	}
-
-	public TraductionMaterielModel traductionMaterielEntityToModel(TraductionMaterielEntity e)
-	{
-		TraductionMaterielModel m = new TraductionMaterielModel();
-
-		m.setIdTradMateriel(e.getIdTradMat());
-		m.setDescriptionMateriel(e.getDescriptionMateriel());
-		m.setLangueModel(langueEntityToModel(e.getLangue()));
-		m.setMaterielModel(materielEntityToModel(e.getMateriel()));
-		m.setTraductionNomMateriel(e.getTraductionNomMateriel());
-
-		return m;
-	}
-
-	public TraductionMaterielEntity traductionMaterielModelToEntity(TraductionMaterielModel m)
-	{
-		TraductionMaterielEntity e = new TraductionMaterielEntity();
-
-		e.setDescriptionMateriel(m.getDescriptionMateriel());
-		e.setLangue(langueModelToEntity(m.getLangueModel()));
-		e.setMateriel(materielModelToEntity(m.getMaterielModel()));
-		e.setTraductionNomMateriel(m.getTraductionNomMateriel());
-
-		return e;
-	}
+        return e;
+    }
 }

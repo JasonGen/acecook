@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Basket {
 
-    private Map<Integer, LigneCommandeModel> products = new HashMap<Integer, LigneCommandeModel>();
+    private Map<Integer, LigneCommandeModel> products = new HashMap<>();
 
     public Map<Integer, LigneCommandeModel> getProducts() {
         return products;

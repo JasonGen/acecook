@@ -1,5 +1,6 @@
 package com.spring.henallux.dataAccess.Entity;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -10,47 +11,53 @@ import org.hibernate.annotations.Type;
 @Entity
 @Table(name = "achat")
 public class AchatEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Numerocommande")
-	private Integer numCom;
-	
-	@Column(name = "Dateachat")
-	@Type(type="date")
-	private Date dateAchat;
-	
-	@ManyToOne
-	@JoinColumn(name = "IdClient", referencedColumnName = "IdClient")
-	private ClientEntity client;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Numerocommande")
+    private Integer numCom;
 
-	//GETTERS SETTERS
-	public ClientEntity getClient() {
-		return client;
-	}
+    @Column(name = "Dateachat", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date dateAchat;
 
-	public void setClient(ClientEntity client) {
-		this.client = client;
-	}
+    @ManyToOne
+    @JoinColumn(name = "IdClient", referencedColumnName = "IdClient")
+    private ClientEntity client;
 
-	
-	public Integer getNumCom() {
-		return numCom;
-	}
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "achat")
+    private Collection<LigneCommandeEntity> ligneCommandeEntities;
 
-	public void setNumCom(Integer numCom) {
-		this.numCom = numCom;
-	}
+    //GETTERS SETTERS
+    public ClientEntity getClient() {
+        return client;
+    }
 
-	public Date getDateAchat() {
-		return dateAchat;
-	}
-
-	public void setDateAchat(Date dateAchat) {
-		this.dateAchat = dateAchat;
-	}
+    public void setClient(ClientEntity client) {
+        this.client = client;
+    }
 
 
-	
-	
+    public Integer getNumCom() {
+        return numCom;
+    }
 
+    public void setNumCom(Integer numCom) {
+        this.numCom = numCom;
+    }
+
+    public Date getDateAchat() {
+        return dateAchat;
+    }
+
+    public void setDateAchat(Date dateAchat) {
+        this.dateAchat = dateAchat;
+    }
+
+    public Collection<LigneCommandeEntity> getLigneCommandeEntities() {
+        return ligneCommandeEntities;
+    }
+
+    public void setLigneCommandeEntities(Collection<LigneCommandeEntity> ligneCommandeEntities) {
+        this.ligneCommandeEntities = ligneCommandeEntities;
+    }
 }

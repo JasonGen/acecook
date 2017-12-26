@@ -2,6 +2,7 @@ package com.spring.henallux.controller;
 
 import com.spring.henallux.dataAccess.DAO.AchatDAO;
 import com.spring.henallux.dataAccess.DAO.LigneCommandeDAO;
+import com.spring.henallux.dataAccess.Entity.AchatEntity;
 import com.spring.henallux.model.AchatModel;
 import com.spring.henallux.model.Basket;
 import com.spring.henallux.model.ClientModel;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import static com.spring.henallux.controller.Constants.ConstantsController.*;
 import static com.spring.henallux.controller.MyAccountController.BASKET;
@@ -22,41 +24,35 @@ import static com.spring.henallux.controller.MyAccountController.CURRENT_USER;
 
 
 @Controller
-@RequestMapping(value="/cart")
-@SessionAttributes({MyAccountController.CURRENT_USER, BASKET})
+@RequestMapping(value = "/cart")
+@SessionAttributes({CURRENT_USER, BASKET})
 public class CartController {
 
-	@Autowired
-	private AchatDAO achatDAO;
-	@Autowired
-	private LigneCommandeDAO ligneCommandeDAO;
+    @Autowired
+    private AchatDAO achatDAO;
 
-	@RequestMapping(method=RequestMethod.GET)
-	public String home(Model model)
-	{
-		return "integrated:cart";
-	}
 
-	@RequestMapping(value = "/confirmOrder", method = RequestMethod.GET)
-	public String getConfirmOrder(Model model, @ModelAttribute(value = BASKET)Basket basket, @ModelAttribute(value = CURRENT_USER)ClientModel clientModel){
-		if(clientModel.getEmail() == null)
-		{
-			return REDIRECT_MYACCOUNT;
-		}
-		else{
-			AchatModel achatModel = new AchatModel();
+    @RequestMapping(method = RequestMethod.GET)
+    public String home(Model model) {
+        return "integrated:cart";
+    }
+
+    @RequestMapping(value = "/confirmOrder", method = RequestMethod.GET)
+    public String getConfirmOrder(@ModelAttribute(value = BASKET) Basket basket
+            , @ModelAttribute(value = CURRENT_USER) ClientModel clientModel) {
+        if (clientModel.getEmail() == null) {
+            return REDIRECT_MYACCOUNT;
+        } else {
+            AchatModel achatModel = new AchatModel();
             achatModel.setClient(clientModel);
-			achatModel.setDateAchat(new Date());
+            achatModel.setDateAchat(new Date());
 
-				for(LigneCommandeModel ligne : basket.getProducts().values()){
-					LigneCommandeModel ligneCommandeModel = new LigneCommandeModel();
-					ligneCommandeModel.setNumeroCommande(achatModel);
-					ligneCommandeModel.setPrixReel(ligne.getMateriel().getPrix());
-					ligneCommandeModel.setNombrePieces(ligne.getNombrePieces());
-					ligneCommandeModel.setMateriel(ligne.getMateriel());
-					ligneCommandeDAO.saveAndFlush(ligneCommandeModel);
-				}
-			return REDIRECT_HOME;
-		}
-	}
+            //on ajoute à la commande toutes les lignes de commandes qui se trouve dans notre panier.
+            achatModel.setLigneCommandeModelList(basket.getProducts().values());
+
+            AchatEntity achat = achatDAO.save(achatModel);
+
+            return REDIRECT_HOME;
+        }
+    }
 }
