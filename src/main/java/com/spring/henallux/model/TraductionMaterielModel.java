@@ -1,47 +1,52 @@
 package com.spring.henallux.model;
 
-public class TraductionMaterielModel {
-	private Integer idTradMateriel;
-	private String descriptionMateriel;
-	private String traductionNomMateriel;
-	private MaterielModel materielModel;
-	private LangueModel langueModel;
+import java.io.Serializable;
 
-	public Integer getIdTradMateriel() {
-		return idTradMateriel;
-	}
-	public void setIdTradMateriel(Integer idTradMateriel) {
-		this.idTradMateriel = idTradMateriel;
-	}
-	public String getDescriptionMateriel() {
-		return descriptionMateriel;
-	}
-	public void setDescriptionMateriel(String descriptionMateriel) {
-		this.descriptionMateriel = descriptionMateriel;
-	}
+public class TraductionMaterielModel implements Serializable {
+    private Integer idTradMateriel;
+    private String descriptionMateriel;
+    private String traductionNomMateriel;
+    private MaterielModel materielModel;
+    private LangueModel langueModel;
 
-	public String getTraductionNomMateriel() {
-		return traductionNomMateriel;
-	}
+    public Integer getIdTradMateriel() {
+        return idTradMateriel;
+    }
 
-	public void setTraductionNomMateriel(String traductionNomMateriel) {
-		this.traductionNomMateriel = traductionNomMateriel;
-	}
+    public void setIdTradMateriel(Integer idTradMateriel) {
+        this.idTradMateriel = idTradMateriel;
+    }
 
-	public MaterielModel getMaterielModel() {
-		return materielModel;
-	}
+    public String getDescriptionMateriel() {
+        return descriptionMateriel;
+    }
 
-	public void setMaterielModel(MaterielModel materielModel) {
-		this.materielModel = materielModel;
-	}
+    public void setDescriptionMateriel(String descriptionMateriel) {
+        this.descriptionMateriel = descriptionMateriel;
+    }
 
-	public LangueModel getLangueModel() {
-		return langueModel;
-	}
+    public String getTraductionNomMateriel() {
+        return traductionNomMateriel;
+    }
 
-	public void setLangueModel(LangueModel langueModel) {
-		this.langueModel = langueModel;
-	}
+    public void setTraductionNomMateriel(String traductionNomMateriel) {
+        this.traductionNomMateriel = traductionNomMateriel;
+    }
+
+    public MaterielModel getMaterielModel() {
+        return materielModel;
+    }
+
+    public void setMaterielModel(MaterielModel materielModel) {
+        this.materielModel = materielModel;
+    }
+
+    public LangueModel getLangueModel() {
+        return langueModel;
+    }
+
+    public void setLangueModel(LangueModel langueModel) {
+        this.langueModel = langueModel;
+    }
 
 }

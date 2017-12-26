@@ -5,44 +5,40 @@ import javax.persistence.*;
 @Entity
 @Table(name = "langue")
 public class LangueEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Idlangue")
-	private Integer idLangue;
-	
-	@Column(name = "Codelangue", length = 6)
-	private String codeLangue;
-	
-	@Column(name = "Nomlangue", length = 30)
-	private String nomLangue;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Idlangue")
+    private Integer idLangue;
 
-	//GETTERS SETTERS
-	
-	public Integer getIdLangue() {
-		return idLangue;
-	}
+    @Column(name = "Codelangue", length = 6, nullable = false)
+    private String codeLangue;
 
-	public void setIdLangue(Integer idLangue) {
-		this.idLangue = idLangue;
-	}
+    @Column(name = "Nomlangue", length = 30, nullable = false)
+    private String nomLangue;
 
-	public String getCodeLangue() {
-		return codeLangue;
-	}
+    public Integer getIdLangue() {
+        return idLangue;
+    }
 
-	public void setCodeLangue(String codeLangue) {
-		this.codeLangue = codeLangue;
-	}
+    public void setIdLangue(Integer idLangue) {
+        this.idLangue = idLangue;
+    }
 
-	public String getNomLangue() {
-		return nomLangue;
-	}
+    public String getCodeLangue() {
+        return codeLangue;
+    }
 
-	public void setNomLangue(String nomLangue) {
-		this.nomLangue = nomLangue;
-	}
+    public void setCodeLangue(String codeLangue) {
+        this.codeLangue = codeLangue;
+    }
 
+    public String getNomLangue() {
+        return nomLangue;
+    }
 
-	
+    public void setNomLangue(String nomLangue) {
+        this.nomLangue = nomLangue;
+    }
+
 
 }

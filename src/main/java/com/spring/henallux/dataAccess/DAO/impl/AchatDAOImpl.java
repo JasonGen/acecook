@@ -26,8 +26,8 @@ public class AchatDAOImpl implements AchatDAO{
 	}
 
 	@Override
-	public AchatEntity save(AchatModel achatModel) {
-		return repositoryAchat.save(providerConverter.achatModelToEntity(achatModel));
+	public void save(AchatModel achatModel) {
+		repositoryAchat.save(providerConverter.achatModelToEntity(achatModel));
 	}
 
 

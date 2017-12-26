@@ -27,7 +27,6 @@ public class AchatEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "achat")
     private Collection<LigneCommandeEntity> ligneCommandeEntities;
 
-    //GETTERS SETTERS
     public ClientEntity getClient() {
         return client;
     }
@@ -35,7 +34,6 @@ public class AchatEntity {
     public void setClient(ClientEntity client) {
         this.client = client;
     }
-
 
     public Integer getNumCom() {
         return numCom;

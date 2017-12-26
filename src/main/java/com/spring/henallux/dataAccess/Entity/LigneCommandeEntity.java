@@ -13,7 +13,7 @@ public class LigneCommandeEntity {
     @Column(name = "Prixreel", columnDefinition = "Decimal(8,2)")
     private Double prixReel;
 
-    @Column(name = "Nombrepieces")
+    @Column(name = "Nombrepieces", nullable = false)
     private Integer nombrePieces;
 
     @ManyToOne

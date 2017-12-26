@@ -33,19 +33,19 @@ public class ClientEntity {
     @Column(name = "Numtel", length = 15)
     private String numTel;
 
-    @Column(name = "Motdepasse")
+    @Column(name = "Motdepasse", nullable = false)
     private String motDePasse;
 
-    @Column(name = "Adr_numerorue", length = 6)
+    @Column(name = "Adr_numerorue", length = 6, nullable = false)
     private String numeroRue;
 
-    @Column(name = "Adr_rue", length = 30)
+    @Column(name = "Adr_rue", length = 30, nullable = false)
     private String rue;
 
-    @Column(name = "Adr_ville", length = 30)
+    @Column(name = "Adr_ville", length = 30, nullable = false)
     private String ville;
 
-    @Column(name = "Codepostal")
+    @Column(name = "Codepostal", nullable = false)
     private Integer codePostal;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
@@ -104,12 +104,6 @@ public class ClientEntity {
     }
 
     public void setMotDePasse(String motDePasse) {
-
-//		try {
-//			cryptingPassword.cryptedPassword(motDePasse);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
         this.motDePasse = motDePasse;
     }
 
@@ -153,21 +147,6 @@ public class ClientEntity {
     public void setAchats(List<AchatEntity> achats) {
         this.achats = achats;
     }
-
-	/*
-    public List<AchatEntity> getListeAchats() {
-		return listeAchats;
-	}
-
-	public void setListeAchats(List<AchatEntity> listeAchats) {
-		this.listeAchats = listeAchats;
-	}
-	*/
-    //@JoinColumn(name = "Numerocommande")
-    //le many to one est en EAGER par défaut (fetch) attention
-
-
-//GETTERS SETTERS
 
 
 }

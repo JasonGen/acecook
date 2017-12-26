@@ -16,9 +16,8 @@ import static com.spring.henallux.controller.MyAccountController.BASKET;
 public class AboutController {
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String home(Model model) 
+	public String home()
 	{
-		
 		return "integrated:about";
 	}
 	

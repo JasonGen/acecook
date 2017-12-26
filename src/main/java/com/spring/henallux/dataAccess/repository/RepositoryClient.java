@@ -8,17 +8,19 @@ import java.lang.StringBuilder;
 import org.springframework.stereotype.Repository;
 
 import com.spring.henallux.dataAccess.Entity.ClientEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional
 public interface RepositoryClient extends JpaRepository<ClientEntity, Integer>{
 
-	static final String IS_EMAIL_EXIST = "select count(*) from ClientEntity client " +
+	String IS_EMAIL_EXIST = "select count(*) from ClientEntity client " +
 			"where client.email = :email";
 
 	@Query(IS_EMAIL_EXIST)
 	Integer isEmailExist(@Param("email")String email);
 
-	static final String IS_EXIST_MAIL_PASSWORD =  "select client from ClientEntity client " +
+	String IS_EXIST_MAIL_PASSWORD =  "select client from ClientEntity client " +
 			"where client.email = :email and client.motDePasse = :motDePasse";
 
 	@Query(IS_EXIST_MAIL_PASSWORD)

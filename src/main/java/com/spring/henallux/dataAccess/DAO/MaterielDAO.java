@@ -5,6 +5,7 @@ import com.spring.henallux.model.MaterielModel;
 import java.util.List;
 
 public interface MaterielDAO {
-	MaterielModel find(Integer id);
-	List<MaterielModel> findAll();
+    MaterielModel find(Integer id);
+
+    List<MaterielModel> findAll();
 }

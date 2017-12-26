@@ -1,10 +1,11 @@
 package com.spring.henallux.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Basket {
+public class Basket implements Serializable {
 
     private Map<Integer, LigneCommandeModel> products = new HashMap<>();
 

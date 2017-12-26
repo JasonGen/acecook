@@ -50,7 +50,7 @@ public class CartController {
             //on ajoute à la commande toutes les lignes de commandes qui se trouve dans notre panier.
             achatModel.setLigneCommandeModelList(basket.getProducts().values());
 
-            AchatEntity achat = achatDAO.save(achatModel);
+            achatDAO.save(achatModel);
 
             return REDIRECT_HOME;
         }

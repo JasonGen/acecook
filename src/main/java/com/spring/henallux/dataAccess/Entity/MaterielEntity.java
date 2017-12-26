@@ -16,11 +16,8 @@ public class MaterielEntity {
 	@Column(name = "Prix", columnDefinition = "Decimal(8,2)")
 	private Double prix;
 	
-	@Column(name = "Quantitestock")
+	@Column(name = "Quantitestock", nullable = false)
 	private Integer quantiteStock;
-
-	//GETTERS SETTERS
-	
 
 	public Integer getIdMateriel() {
 		return idMateriel;
