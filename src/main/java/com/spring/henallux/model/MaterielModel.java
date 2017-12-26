@@ -1,12 +1,17 @@
 package com.spring.henallux.model;
 
+
+import java.util.List;
+
 public class MaterielModel {
 	private Integer idMateriel;
 	private String photo;
 	private Double prix;
 	private Integer quantiteStock;
+	private List<TraductionMaterielModel> listTradModel;
+
 	
-	
+
 	public Integer getIdMateriel() {
 		return idMateriel;
 	}
@@ -31,6 +36,12 @@ public class MaterielModel {
 	public void setQuantiteStock(Integer quantiteStock) {
 		this.quantiteStock = quantiteStock;
 	}
-	
-	
+
+    public List<TraductionMaterielModel> getListTradModel() {
+        return listTradModel;
+    }
+
+    public void setListTradModel(List<TraductionMaterielModel> listTradModel) {
+        this.listTradModel = listTradModel;
+    }
 }

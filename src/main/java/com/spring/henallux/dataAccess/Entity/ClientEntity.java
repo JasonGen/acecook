@@ -44,17 +44,15 @@ public class ClientEntity {
 
 	@Column(name = "Adr_ville", length = 30)
 	private String ville;
-
 	
 	@Column(name = "Codepostal")
 	private Integer codePostal;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+	private List<AchatEntity> achats;
+
 	public Integer getIdClient() {
 		return idClient;
-	}
-
-	public void setIdClient(Integer idClient) {
-		this.idClient = idClient;
 	}
 
 	public String getNom() {
@@ -143,7 +141,16 @@ public class ClientEntity {
 	public void setCodePostal(Integer codePostal) {
 		this.codePostal = codePostal;
 	}
-/*
+
+	public List<AchatEntity> getAchats() {
+		return achats;
+	}
+
+	public void setAchats(List<AchatEntity> achats) {
+		this.achats = achats;
+	}
+
+	/*
 	public List<AchatEntity> getListeAchats() {
 		return listeAchats;
 	}

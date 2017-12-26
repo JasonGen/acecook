@@ -19,7 +19,7 @@ public class AchatEntity {
 	@Type(type="date")
 	private Date dateAchat;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "IdClient", referencedColumnName = "IdClient")
 	private ClientEntity client;
 
