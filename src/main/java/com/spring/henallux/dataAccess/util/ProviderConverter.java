@@ -120,6 +120,9 @@ public class ProviderConverter {
         m.setPhoto(e.getPhoto());
         m.setPrix(e.getPrix());
         m.setQuantiteStock(e.getQuantiteStock());
+        /*
+        TODO : Setter les traductions de tout les produits
+         */
         return m;
     }
 

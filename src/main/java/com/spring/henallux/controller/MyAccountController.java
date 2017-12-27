@@ -1,20 +1,22 @@
 package com.spring.henallux.controller;
 
 import com.spring.henallux.Service.CryptingPassword;
+import com.spring.henallux.dataAccess.DAO.ClientDAO;
 import com.spring.henallux.model.Basket;
 import com.spring.henallux.model.ClientModel;
 import com.spring.henallux.model.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.spring.henallux.dataAccess.DAO.ClientDAO;
-
-import static com.spring.henallux.controller.Constants.ConstantsController.*;
+import static com.spring.henallux.controller.Constants.ConstantsController.MYACCOUNT;
+import static com.spring.henallux.controller.Constants.ConstantsController.REDIRECT_HOME;
 import static com.spring.henallux.controller.MyAccountController.BASKET;
 import static com.spring.henallux.controller.MyAccountController.CURRENT_USER;
-
 
 @Controller
 @RequestMapping(value = "/myAccount")
@@ -26,7 +28,6 @@ public class MyAccountController {
 
     @Autowired
     private ClientDAO clientDAO;
-
     @Autowired
     private CryptingPassword cryptingPassword;
 
@@ -66,6 +67,16 @@ public class MyAccountController {
             return MYACCOUNT;
         }
         model.addAttribute(CURRENT_USER, currentUser);
+        return REDIRECT_HOME;
+    }
+
+    @RequestMapping(value = "disconnect", method = RequestMethod.GET)
+    public String disconnect(Model model, @ModelAttribute(value = BASKET) Basket panier, @ModelAttribute(value = CURRENT_USER) ClientModel user) {
+
+        //On "préviens" la JSP que le user n'existe plus;
+        model.addAttribute(CURRENT_USER, null);
+        //Si le user se déconnecte, il perd ce qui se trouve dans son panier. Celui-ci est vidé
+        panier.getProducts().clear();
         return REDIRECT_HOME;
     }
 }

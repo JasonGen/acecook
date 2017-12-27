@@ -24,7 +24,8 @@
           <c:forEach items = "${basket.products}" var = "product">
 
             <tr>
-              <td>${product.value.materiel.nomMateriel}</td>
+
+
               <td>${product.value.prixReel} €</td>
               <td>${product.value.nombrePieces}</td>
               <td>${product.value.prixReel * product.value.nombrePieces} €</td>

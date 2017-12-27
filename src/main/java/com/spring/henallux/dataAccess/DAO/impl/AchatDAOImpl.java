@@ -1,15 +1,11 @@
 package com.spring.henallux.dataAccess.DAO.impl;
 
-import com.spring.henallux.dataAccess.Entity.AchatEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.spring.henallux.dataAccess.DAO.AchatDAO;
 import com.spring.henallux.dataAccess.repository.RepositoryAchat;
-import com.spring.henallux.dataAccess.repository.RepositoryClient;
 import com.spring.henallux.dataAccess.util.ProviderConverter;
 import com.spring.henallux.model.AchatModel;
-import com.spring.henallux.model.ClientModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AchatDAOImpl implements AchatDAO{

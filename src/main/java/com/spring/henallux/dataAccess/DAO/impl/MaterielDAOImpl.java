@@ -17,15 +17,14 @@ public class MaterielDAOImpl implements MaterielDAO {
 
     @Autowired
     private RepositoryMateriel repositoryMateriel;
-    
+
     @Autowired
     private ProviderConverter providerConverter;
-   
-	@Override
-	public MaterielModel find(Integer id) {
-		
-		return providerConverter.materielEntityToModel(repositoryMateriel.findOne(id));
-	}
+
+    @Override
+    public MaterielModel find(Integer id) {
+        return providerConverter.materielEntityToModel(repositoryMateriel.findOne(id));
+    }
 
     @Override
     public List<MaterielModel> findAll() {
@@ -33,5 +32,10 @@ public class MaterielDAOImpl implements MaterielDAO {
                 .stream()
                 .map(e -> providerConverter.materielEntityToModel(e))
                 .collect(toList());
+    }
+
+    @Override
+    public void updateStock(Integer stock, Integer id) {
+        repositoryMateriel.updateStock(stock, id);
     }
 }

@@ -8,4 +8,6 @@ public interface MaterielDAO {
     MaterielModel find(Integer id);
 
     List<MaterielModel> findAll();
+
+    void updateStock(Integer stock, Integer id);
 }

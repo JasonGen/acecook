@@ -11,10 +11,11 @@
     <div class="left_content">
       <div class="title"><span class="title_icon"><!--  <img src="images/bullet1.gif" alt="" />--></span><spring:message code="productsTitle"/></div>
       <div class="new_products">
-        <c:forEach items="${productList}" var="product">
-          <div class="new_prod_box"> <a href="#">${translationProductList[product.index]}</a>
+        <c:forEach items="${productList}" var="product" varStatus="status">
+          <div class="new_prod_box"> <a href="#">${translationProductList[status.index].traductionNomMateriel}</a>
             <div class="new_prod_bg"> <a href="<spring:url value ='/details/${product.idMateriel}' />"><img src="<spring:url value='/images/${product.photo}' />" alt="" class="thumb" border="0" /></a> </div>
           </div>
+          <div > </div>
 
         </c:forEach>
       </div>

@@ -12,48 +12,22 @@
     <%--<div class="new_prod_bg"> <a href="<spring:url value ='/details/${product.idMateriel}' />"><img src="<spring:url value='/images/${productList[i.photo]}' />"--%>
 <div class="center_content">
   <div class="left_content">
-    <div class="title"><span class="title_icon"></span><spring:message code="productsTitle"/></div>
+    <div class="title"><span class="title_icon"></span><spring:message code="indexTitle"/></div>
     <div class="feat_prod_box">
-      <div class="prod_img"><a href="#"><img src="images/prod1.gif" alt="" border="0" /></a></div>
+      <div class="prod_img"><a href="#"><img src="images/cuisine2.jpg" alt="" border="0" /></a></div>
       <div class="prod_det_box">
-        <div class="box_top"></div>
-        <div class="box_center">
-          <div class="prod_title">Product name</div>
-          <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-          <a href="#" class="more">- more details -</a>
-          <div class="clear"></div>
-        </div>
-        <div class="box_bottom"></div>
+
       </div>
-      <div class="clear"></div>
+
     </div>
     <div class="feat_prod_box">
-      <div class="prod_img"><a href="#"><img src="images/prod2.gif" alt="" border="0" /></a></div>
-      <div class="prod_det_box">
-        <div class="box_top"></div>
-        <div class="box_center">
-          <div class="prod_title">Product name</div>
-          <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-          <a href="#" class="more">- more details -</a>
-          <div class="clear"></div>
-        </div>
-        <div class="box_bottom"></div>
-      </div>
-      <div class="clear"></div>
+
     </div>
-    <div class="title"></span>New products</div>
+    <div class="title"></span></div>
     <div class="new_products">
-      <div class="new_prod_box"> <a href="#">product name</a>
-        <div class="new_prod_bg"> <span class="new_icon"><img src="images/new_icon.gif" alt="" /></span> <a href="#"><img src="images/thumb1.gif" alt="" class="thumb" border="0" /></a> </div>
-      </div>
-      <div class="new_prod_box"> <a href="#">product name</a>
-        <div class="new_prod_bg"> <span class="new_icon"><img src="images/new_icon.gif" alt="" /></span> <a href="#"><img src="images/thumb2.gif" alt="" class="thumb" border="0" /></a> </div>
-      </div>
-      <div class="new_prod_box"> <a href="#">product name</a>
-        <div class="new_prod_bg"> <span class="new_icon"><img src="images/new_icon.gif" alt="" /></span> <a href="#"><img src="images/thumb3.gif" alt="" class="thumb" border="0" /></a> </div>
-      </div>
+
     </div>
-    <div class="clear"></div>
+
   </div>
   <!--end of left content-->
   <div class="right_content">
@@ -71,7 +45,6 @@
       <a href="${localeFr}"><img src="images/fr.gif" alt="" border="0" /></a>  </div>
     <div class="cart">
       <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" /></span><spring:message code="cart"/></div>
-
       <div class="home_cart_content"> <c:if test ="${empty basket.products}"> 0
       </c:if>
         <c:if test = "${not empty basket.products}"> ${basket.getNumberArticles()} x

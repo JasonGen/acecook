@@ -11,39 +11,30 @@ import com.spring.henallux.model.ClientModel;
 @Service
 public class ClientDAOImpl implements ClientDAO {
 
-	@Autowired
-	private RepositoryClient repositoryClient;
-	@Autowired
-	private ProviderConverter providerConverter;
+    @Autowired
+    private RepositoryClient repositoryClient;
+    @Autowired
+    private ProviderConverter providerConverter;
 
-	@Override
-	public ClientModel find(Integer id) {
+    @Override
+    public ClientModel find(Integer id) {
+        return providerConverter.clientEntityToModel(repositoryClient.findOne(id));
+    }
 
-		return providerConverter.clientEntityToModel(repositoryClient.findOne(id));
-	}
+    @Override
+    public void save(ClientModel clientModel) {
+        repositoryClient.save(providerConverter.clientModelToEntity(clientModel));
+    }
 
-	@Override
-	public void save(ClientModel clientModel)
-	{
-		repositoryClient.save(providerConverter.clientModelToEntity(clientModel));
-	}
+    @Override
+    public boolean isEmailExist(String email) {
+        return repositoryClient.isEmailExist(email) == 1 ? true : false;
+    }
 
-	@Override
-	public boolean isEmailExist(String email) {
-		return repositoryClient.isEmailExist(email) == 1 ? true :false;
-	}
-
-	@Override
-	public ClientModel existForEmailAndPassword(String email, String password) {
-		ClientEntity client = repositoryClient.isExistMailPassword(email, password);
-		if(client == null)
-		{
-			return null;
-		}
-		else
-		{
-			return providerConverter.clientEntityToModel(client);
-		}
-	}
+    @Override
+    public ClientModel existForEmailAndPassword(String email, String password) {
+        ClientEntity client = repositoryClient.isExistMailPassword(email, password);
+        return client == null ? null : providerConverter.clientEntityToModel(client);
+    }
 
 }

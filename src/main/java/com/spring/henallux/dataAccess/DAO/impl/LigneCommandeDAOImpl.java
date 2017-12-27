@@ -26,10 +26,4 @@ public class LigneCommandeDAOImpl implements LigneCommandeDAO{
     public void save(LigneCommandeModel ligneCommandeModel) {
         repositoryLigneCommande.save(providerConverter.ligneCommandeModelToEntity(ligneCommandeModel));
     }
-
-    @Override
-    public void saveAndFlush(LigneCommandeModel ligneCommandeModel)
-    {
-        repositoryLigneCommande.saveAndFlush(providerConverter.ligneCommandeModelToEntity(ligneCommandeModel));
-    }
 }
