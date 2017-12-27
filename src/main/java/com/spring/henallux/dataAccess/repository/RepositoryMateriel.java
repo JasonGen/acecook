@@ -12,7 +12,4 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface RepositoryMateriel extends JpaRepository<MaterielEntity, Integer>{
 
-    @Modifying
-    @Query("update MaterielEntity entity set entity.quantiteStock = :stock where entity.idMateriel = :id")
-    void updateStock(@Param("stock") Integer stock, @Param("id") Integer id);
 }

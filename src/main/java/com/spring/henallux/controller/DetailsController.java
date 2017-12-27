@@ -75,11 +75,8 @@ public class DetailsController {
                 } else {
                     basket.getProducts().put(idProduct, ligneCommandeModel);
                 }
-                //TODO : vérifier que la commande à bien été créée sinon, on enlève du stock alors qu"il n'a pas été payé
-                //Update le nombre de pièces restantes dans la DB pour ce matériel
-                materielDAO.updateStock(stockRestant, idProduct);
-                //MAJ du model materiel
-                materielModel = materielDAO.find(idProduct);
+                //MAJ de la quantité de stock restante pour cet article
+                materielModel.setQuantiteStock(stockRestant);
                 model.addAttribute("materiel", materielModel);
             } else {
                 //Stock insuffisant, on péviens le user via une erreur

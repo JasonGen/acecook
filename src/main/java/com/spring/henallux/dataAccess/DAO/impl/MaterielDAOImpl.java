@@ -1,5 +1,6 @@
 package com.spring.henallux.dataAccess.DAO.impl;
 
+import com.spring.henallux.dataAccess.Entity.MaterielEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.spring.henallux.dataAccess.DAO.MaterielDAO;
@@ -35,7 +36,7 @@ public class MaterielDAOImpl implements MaterielDAO {
     }
 
     @Override
-    public void updateStock(Integer stock, Integer id) {
-        repositoryMateriel.updateStock(stock, id);
+    public void updateStock(MaterielEntity entity) {
+        repositoryMateriel.saveAndFlush(entity);
     }
 }

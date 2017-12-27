@@ -1,5 +1,6 @@
 package com.spring.henallux.dataAccess.DAO;
 
+import com.spring.henallux.dataAccess.Entity.MaterielEntity;
 import com.spring.henallux.model.MaterielModel;
 
 import java.util.List;
@@ -9,5 +10,5 @@ public interface MaterielDAO {
 
     List<MaterielModel> findAll();
 
-    void updateStock(Integer stock, Integer id);
+    void updateStock(MaterielEntity entity);
 }
